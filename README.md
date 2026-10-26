@@ -13,10 +13,59 @@
 ## 目录
 
 ```
-frontend/          # 前端
-backend/           # 后端
-backend/sql/       # MySQL 建表与种子数据
+.
+├── README.md
+├── start-all.bat              # Windows：一键启动（MySQL 后端 + 前端）
+├── start-all-demo.bat         # Windows：一键启动（H2 演示 + 前端）
+├── start-backend.bat          # Windows：仅后端（MySQL）
+├── start-backend-demo.bat     # Windows：仅后端（H2 演示）
+├── start-frontend.bat         # Windows：仅前端
+├── backend/
+│   ├── pom.xml
+│   ├── sql/
+│   │   ├── schema.sql         # 建库建表
+│   │   └── seed.sql           # 种子用户与资料假数据
+│   └── src/main/
+│       ├── java/com/yunlong/bid/
+│       │   ├── BidPlatformApplication.java
+│       │   ├── auth/          # Token 鉴权
+│       │   ├── config/
+│       │   ├── controller/    # 登录 / 首页 / 资料 API
+│       │   ├── dto/
+│       │   ├── entity/
+│       │   ├── mapper/
+│       │   └── service/
+│       └── resources/
+│           ├── application.yml
+│           ├── application-demo.yml
+│           ├── demo/          # H2 建表与种子
+│           └── mapper/
+└── frontend/
+    ├── package.json
+    ├── vite.config.ts
+    ├── index.html
+    └── src/
+        ├── App.tsx
+        ├── api/
+        ├── auth/
+        ├── layouts/
+        ├── pages/             # Login / Home / Library
+        └── styles.css
 ```
+
+## Windows 一键启动（.bat）
+
+需已安装 **JDK 21+**、**Maven**、**Node.js**，并加入 PATH。
+
+| 脚本 | 说明 |
+| --- | --- |
+| `start-all-demo.bat` | **推荐先试**：无 MySQL，H2 + 前端双窗口启动 |
+| `start-all.bat` | MySQL 后端 + 前端（需先建库） |
+| `start-backend-demo.bat` | 仅后端演示模式 |
+| `start-backend.bat` | 仅后端（MySQL） |
+| `start-frontend.bat` | 仅前端（首次会自动 `npm install`） |
+
+双击运行后访问：http://127.0.0.1:5173
 
 ## 一、准备 MySQL（推荐）
 
