@@ -1,0 +1,260 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  background: #f5f7fa;
+  color: #1f1f1f;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  min-height: 100%;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 56px;
+  background: #fff;
+  border-bottom: 1px solid #eef0f3;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #1677ff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-company {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f1f1f;
+}
+
+.brand-divider {
+  width: 1px;
+  height: 14px;
+  background: #d9d9d9;
+  flex-shrink: 0;
+}
+
+.brand-product {
+  font-size: 14px;
+  color: #595959;
+}
+
+.app-sider {
+  background: #fafbfd !important;
+  border-right: 1px solid #eef0f3;
+}
+
+.app-content {
+  padding: 24px 28px;
+  min-height: calc(100vh - 56px);
+}
+
+.page-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.page-intro h1 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.page-intro p {
+  margin: 0;
+  color: #8c8c8c;
+  font-size: 13px;
+}
+
+.page-date {
+  color: #8c8c8c;
+  font-size: 13px;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid #eef0f3;
+  border-radius: 8px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #8c8c8c;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f1f1f;
+  line-height: 1;
+}
+
+.stat-value span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #8c8c8c;
+  margin-left: 4px;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid #eef0f3;
+  border-radius: 8px;
+  padding: 16px 18px 8px;
+}
+
+.panel-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f1f1f;
+}
+
+.panel-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #dbeafe 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #e8f3ff 0%, transparent 50%),
+    #f5f7fa;
+}
+
+.login-box {
+  width: min(400px, 100%);
+  background: #fff;
+  border: 1px solid #eef0f3;
+  border-radius: 12px;
+  padding: 36px 32px 28px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.login-brand h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.login-sub {
+  margin: 0 0 28px;
+  color: #8c8c8c;
+  font-size: 13px;
+}
+
+.login-hint {
+  margin-top: 16px;
+  font-size: 12px;
+  color: #bfbfbf;
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .stat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brand-company {
+    display: none;
+  }
+
+  .brand-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .stat-row {
+    grid-template-columns: 1fr;
+  }
+
+  .app-content {
+    padding: 16px;
+  }
+
+  .page-intro {
+    flex-direction: column;
+  }
+}

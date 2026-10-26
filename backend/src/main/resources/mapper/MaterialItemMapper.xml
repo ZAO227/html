@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunlong.bid.mapper.MaterialItemMapper">
+
+  <sql id="filterWhere">
+    <where>
+      <if test="keyword != null and keyword != ''">
+        AND (name LIKE CONCAT('%', #{keyword}, '%')
+          OR project_name LIKE CONCAT('%', #{keyword}, '%'))
+      </if>
+      <if test="department != null and department != ''">
+        AND department = #{department}
+      </if>
+      <if test="status != null and status != ''">
+        AND status = #{status}
+      </if>
+      <if test="libraryOnly != null and libraryOnly == true">
+        AND library = 1
+      </if>
+    </where>
+  </sql>
+
+  <select id="search" resultType="com.yunlong.bid.entity.MaterialItem">
+    SELECT id, name, project_name, department, category, requirement,
+           status, library, file_url, created_at, updated_at
+    FROM material_item
+    <include refid="filterWhere"/>
+    ORDER BY id ASC
+    LIMIT #{limit} OFFSET #{offset}
+  </select>
+
+  <select id="count" resultType="long">
+    SELECT COUNT(1) FROM material_item
+    <include refid="filterWhere"/>
+  </select>
+
+  <select id="countPending" resultType="long">
+    SELECT COUNT(1) FROM material_item WHERE status = 'PENDING'
+  </select>
+
+  <select id="countPendingByDepartment" resultType="long">
+    SELECT COUNT(1) FROM material_item
+    WHERE status = 'PENDING' AND department = #{department}
+  </select>
+
+  <select id="findById" resultType="com.yunlong.bid.entity.MaterialItem">
+    SELECT id, name, project_name, department, category, requirement,
+           status, library, file_url, created_at, updated_at
+    FROM material_item
+    WHERE id = #{id}
+  </select>
+
+  <update id="markUploaded">
+    UPDATE material_item
+    SET status = 'UPLOADED',
+        library = 1,
+        file_url = #{fileUrl},
+        updated_at = NOW()
+    WHERE id = #{id}
+  </update>
+</mapper>
